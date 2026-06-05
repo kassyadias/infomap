@@ -58,7 +58,7 @@
     .btn-navy { background: var(--navy); }
     .btn-navy:hover { background: var(--teal); }
 
-    section { padding: 100px 32px; }
+    section { padding: 68px 32px; }
     .container    { max-width: 700px; margin: 0 auto; }
     .container-md { max-width: 900px; margin: 0 auto; }
     hr.thin { border: none; border-top: 1px solid var(--line); }
@@ -134,7 +134,7 @@
     /* ── HERO HEADLINE ── */
     #hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
       font-weight: 400;
       line-height: 1.12;
       max-width: 680px;
@@ -208,6 +208,57 @@
     .loop-block .final { color: var(--navy); font-weight: 600; margin: 0; }
 
     /* ══════════════════════════════
+       E SE
+    ══════════════════════════════ */
+    #ese { background: #162030; }
+    #ese .eyebrow { color: #C8855A; }
+    #ese h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-top: 10px;
+      margin-bottom: 28px;
+      color: #FAF7F3;
+    }
+    .ese-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .ese-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+      transition: background 0.2s;
+    }
+    .ese-item:last-child { border-bottom: none; }
+    .ese-item:hover { background: rgba(255,255,255,0.06); }
+    .ese-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .ese-item p {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #C8C0B5;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .ese-closing {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: normal;
+      font-weight: 400;
+      color: #F0E8DC;
+      line-height: 1.6;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ══════════════════════════════
        BELIEF
     ══════════════════════════════ */
     #belief { background: var(--cream3); }
@@ -246,13 +297,121 @@
     .closing-note { font-size: 0.92rem; color: var(--teal); font-weight: 400; max-width: 520px; padding-top: 32px; border-top: 1px solid var(--line); }
 
     /* ══════════════════════════════
+       NÃO PRECISA
+    ══════════════════════════════ */
+    #nao-precisa { background: var(--cream3); }
+    #nao-precisa h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-top: 10px;
+      margin-bottom: 12px;
+    }
+    .np-intro { font-size: 0.92rem; color: var(--teal); margin-bottom: 48px; }
+
+    .np-list { display: flex; flex-direction: column; }
+
+    .np-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .np-item:first-child { border-top: 1px solid var(--line); }
+
+    .np-nao, .np-sim {
+      padding: 20px 24px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .np-nao {
+      color: #8A8A8A;
+      background: var(--cream3);
+      border-right: 1px solid var(--line);
+      text-decoration: line-through;
+      text-decoration-color: rgba(160,86,61,0.3);
+    }
+    .np-sim {
+      color: var(--navy);
+      background: rgba(58,90,111,0.04);
+      font-weight: 400;
+    }
+    .np-x { color: #C4A898; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+    .np-check { color: var(--teal); flex-shrink: 0; font-size: 0.9rem; margin-top: 1px; font-weight: 600; }
+
+    @media (max-width: 580px) {
+      .np-item { grid-template-columns: 1fr; }
+      .np-nao { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+
+    /* ══════════════════════════════
+       MESMO QUE
+    ══════════════════════════════ */
+    #mesmo-que { background: var(--cream2); }
+    #mesmo-que h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-top: 10px;
+      margin-bottom: 56px;
+    }
+    #mesmo-que h2 em { font-style: italic; color: var(--terra); }
+
+    .mq-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .mq-item {
+      background: var(--cream2);
+      padding: 36px 32px;
+    }
+    .mq-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .mq-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--terra);
+      flex-shrink: 0;
+    }
+    .mq-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--navy);
+    }
+    .mq-item p {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1.85;
+      padding-left: 20px;
+    }
+
+    @media (max-width: 580px) {
+      .mq-list { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════
        MILESTONES
     ══════════════════════════════ */
     #milestones { background: #162030; color: var(--cream3); }
     #milestones .eyebrow { color: #EDE5D4; }
     #milestones h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 400;
       line-height: 1.2;
       color: #FAF7F3;
@@ -263,9 +422,9 @@
 
     .milestone-row {
       display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 0 36px;
-      margin-bottom: 56px;
+      grid-template-columns: 48px 1fr;
+      gap: 0 24px;
+      margin-bottom: 28px;
     }
     .milestone-row:last-child { margin-bottom: 0; }
 
@@ -302,21 +461,21 @@
       margin-top: 10px;
     }
 
-    .m-body { padding-top: 10px; padding-bottom: 16px; }
-    .m-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #A8C4D0; margin-bottom: 6px; }
+    .m-body { padding-top: 8px; padding-bottom: 8px; }
+    .m-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: #A8C4D0; margin-bottom: 4px; }
     .m-body h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.25rem;
       font-weight: 400;
       color: #FAF7F3;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
-    .m-body p { font-size: 0.88rem; font-weight: 400; color: #C8C0B5; margin-bottom: 18px; max-width: 480px; line-height: 1.85; }
-    .m-result {
+    .m-body p { font-size: 0.82rem; font-weight: 400; color: #C8C0B5; margin-bottom: 10px; max-width: 480px; line-height: 1.7; }
+    .m-body p.m-result {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-style: italic;
-      color: #F0E8DC;
+      color: #ffffff;
     }
 
     /* ══════════════════════════════
@@ -325,10 +484,10 @@
     #why { background: var(--cream2); }
     #why h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
       font-weight: 400;
       margin-top: 10px;
-      margin-bottom: 56px;
+      margin-bottom: 36px;
     }
     #why h2 em { font-style: italic; color: var(--terra); }
 
@@ -341,23 +500,22 @@
     }
     .pillar {
       background: var(--cream2);
-      padding: 40px 32px;
+      padding: 28px 24px;
     }
-    /* icon using SVG compass-like shapes */
     .pillar .p-icon {
-      width: 36px; height: 36px;
-      margin-bottom: 20px;
+      width: 28px; height: 28px;
+      margin-bottom: 14px;
       display: block;
       color: var(--brown);
     }
     .pillar h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
+      font-size: 1.1rem;
       font-weight: 400;
       color: var(--navy);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .pillar p { font-size: 0.85rem; font-weight: 400; color: var(--teal); line-height: 1.8; }
+    .pillar p { font-size: 0.82rem; font-weight: 400; color: var(--teal); line-height: 1.7; }
 
     @media (max-width: 640px) { .pillars { grid-template-columns: 1fr; } }
 
@@ -365,14 +523,51 @@
        STORY
     ══════════════════════════════ */
     #story { background: var(--cream3); position: relative; overflow: hidden; }
+
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+    .story-image {
+      position: relative;
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+    }
+    .story-image::before {
+      content: '';
+      position: absolute;
+      top: -8px; left: -8px;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      border: 1.5px solid var(--brown);
+      z-index: 0;
+    }
+    .story-image img {
+      position: relative;
+      z-index: 1;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: 50%;
+      display: block;
+    }
+    .story-title { flex: 1; }
+    .story-title .eyebrow { margin-bottom: 8px; }
     #story h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
       font-weight: 400;
-      margin-top: 10px;
-      margin-bottom: 36px;
+      line-height: 1.25;
     }
-    #story p { font-size: 0.92rem; font-weight: 400; color: var(--teal); margin-bottom: 20px; line-height: 1.95; }
+    #story p { font-size: 0.85rem; font-weight: 400; color: var(--teal); margin-bottom: 14px; line-height: 1.85; }
+
+    @media (max-width: 580px) {
+      .story-header { flex-direction: column; align-items: flex-start; }
+    }
 
     .million-stat {
       text-align: center;
@@ -426,7 +621,7 @@
     #offer .sh { margin-bottom: 56px; }
     #offer h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 400;
       margin-top: 10px;
     }
@@ -461,9 +656,10 @@
     #price .sh { margin-bottom: 52px; }
     #price h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 400;
       margin-top: 10px;
+      white-space: nowrap;
     }
     #price .sub { font-size: 0.9rem; color: var(--teal); font-weight: 400; margin-top: 14px; max-width: 460px; margin-left: auto; margin-right: auto; }
 
@@ -489,7 +685,7 @@
       pointer-events: none;
     }
 
-    .price-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; display: block; position: relative; }
+    .price-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 24px; display: block; position: relative; }
     .price-figure {
       font-family: 'Playfair Display', serif;
       font-size: clamp(4.5rem, 10vw, 6rem);
@@ -508,7 +704,7 @@
        FINAL
     ══════════════════════════════ */
     #final {
-      background: #2A4459;
+      background: #162030;
       color: var(--cream3);
       text-align: center;
       padding: 100px 32px;
@@ -564,6 +760,36 @@
       text-transform: uppercase;
       margin-bottom: 48px;
       position: relative;
+    }
+
+    .final-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-wpp {
+      background: transparent;
+      border: 1px solid rgba(231,226,218,0.3);
+      color: rgba(231,226,218,0.8);
+      font-size: 0.72rem;
+    }
+    .btn-wpp:hover { background: rgba(231,226,218,0.08); color: #fff; }
+
+    /* CTA intermediário */
+    .cta-mid {
+      text-align: center;
+      padding: 40px 32px;
+      background: var(--cream2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .cta-mid p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--navy);
+      margin-bottom: 20px;
     }
 
     /* ══════════════════════════════
@@ -628,7 +854,7 @@
 
     <h1>Transforme o conhecimento<br>que você já tem em um<br><em>produto digital<br>pronto para vender.</em></h1>
 
-    <p class="sub">O Infomap mostra exatamente o que criar, como estruturar sua oferta e como colocar seu produto no mercado com clareza, simplicidade e velocidade.</p>
+    <p class="sub">O mapa para tirar seu produto digital do papel e transformá-lo em uma nova fonte de renda, para viver com mais liberdade e leveza.</p>
 
     <a href="#price" class="btn">Quero criar meu produto digital</a>
 
@@ -652,33 +878,64 @@
 <section id="pain">
   <div class="container">
     <span class="eyebrow">O problema</span>
-    <h2>Você sabe que tem<br>conhecimento para vender.</h2>
-
-    <p style="color:var(--teal); font-size:0.93rem; margin-bottom:28px;">Mas ainda não sabe:</p>
-    <ul class="checks">
-      <li>O que criar</li>
-      <li>Qual formato escolher</li>
-      <li>Como organizar sua entrega</li>
-      <li>Como transformar tudo isso em uma oferta</li>
-    </ul>
+    <h2>Você tem conhecimento<br>para vender.<br>Mas a ideia continua parada.</h2>
 
     <div class="loop-block">
-      <p>Enquanto isso, a ideia continua parada.</p>
-      <p>Você pesquisa. Salva conteúdos. Assiste aulas. Anota insights.</p>
-      <p class="final">Mas continua sem colocar nada no mercado.</p>
+      <p>Você pesquisa. Salva conteúdos. Assiste aulas.</p>
+      <p class="final">Mas continua sem tirar sua ideia do papel.</p>
     </div>
 
-    <p style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:400; font-style:italic; color:var(--terra); margin-top:8px;">O Infomap foi criado para mudar isso.</p>
+    <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; font-style:normal; color:var(--teal); white-space:nowrap;">O Infomap foi criado para mudar isso.</p>
   </div>
 </section>
+
+<hr class="thin" />
+
+<!-- ══════════ E SE ══════════ -->
+<section id="ese">
+  <div class="container">
+    <span class="eyebrow">O produto digital é apenas o caminho.</span>
+    <h2>O verdadeiro destino é:</h2>
+
+    <div class="ese-list">
+      <div class="ese-item">
+        <span class="ese-icon">💰</span>
+        <p>Criar uma nova fonte de renda</p>
+      </div>
+      <div class="ese-item">
+        <span class="ese-icon">🕒</span>
+        <p>Não depender apenas das horas que consegue trabalhar</p>
+      </div>
+      <div class="ese-item">
+        <span class="ese-icon">📈</span>
+        <p>Aumentar seus ganhos sem aumentar proporcionalmente sua carga de trabalho</p>
+      </div>
+      <div class="ese-item">
+        <span class="ese-icon">🌎</span>
+        <p>Ter mais liberdade para escolher como, quando e onde trabalha</p>
+      </div>
+      <div class="ese-item">
+        <span class="ese-icon">🚀</span>
+        <p>Construir algo que continue gerando valor mesmo quando você não está atendendo clientes</p>
+      </div>
+    </div>
+
+    <p class="ese-closing">E tudo isso começa quando você transforma aquilo que já sabe em algo que pode ser vendido.</p>
+  </div>
+</section>
+
+<div class="cta-mid">
+  <p>Pronta para transformar seu conhecimento em renda?</p>
+  <a href="#price" class="btn">Quero criar meu produto digital</a>
+</div>
 
 <hr class="thin" />
 
 <!-- ══════════ BELIEF ══════════ -->
 <section id="belief">
   <div class="container">
-    <span class="eyebrow">A crença que trava</span>
-    <h2>Seu primeiro produto<br><em>não precisa ser um curso.</em></h2>
+    <span class="eyebrow">A crença que te trava</span>
+    <h2>Seu primeiro produto<br><em>não precisa ser um curso complexo.</em></h2>
     <p class="intro">Você não precisa criar dezenas de aulas nem passar meses gravando. Seu primeiro produto pode ser algo muito mais simples.</p>
 
     <div class="product-grid">
@@ -691,7 +948,97 @@
       <div class="product-cell"><span class="icon">📚</span> Bibliotecas</div>
     </div>
 
-    <p class="closing-note">O problema não é falta de conhecimento. O problema é não ter um caminho claro para transformar esse conhecimento em uma oferta.</p>
+    <p class="closing-note">Começar simples não é começar errado. Um produto enxuto, bem posicionado, já é o suficiente para validar seu conhecimento e gerar as suas primeiras vendas.</p>
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ NÃO PRECISA ══════════ -->
+<section id="nao-precisa">
+  <div class="container">
+    <span class="eyebrow">Muita gente acredita que precisa ter tudo pronto antes de começar.</span>
+    <h2>Mas você não precisa<br>de nada disso:</h2>
+
+    <div class="np-list">
+
+      <div class="np-item">
+        <div class="np-nao"><span class="np-x">✕</span> Ter milhares de seguidores</div>
+        <div class="np-sim"><span class="np-check">✓</span> Ter uma transformação clara e uma oferta bem estruturada</div>
+      </div>
+
+      <div class="np-item">
+        <div class="np-nao"><span class="np-x">✕</span> Passar meses estudando marketing digital</div>
+        <div class="np-sim"><span class="np-check">✓</span> Transformar o conhecimento que você já possui em algo vendável</div>
+      </div>
+
+      <div class="np-item">
+        <div class="np-nao"><span class="np-x">✕</span> Criar um curso gigantesco</div>
+        <div class="np-sim"><span class="np-check">✓</span> Começar com formatos mais simples e rápidos de validar</div>
+      </div>
+
+      <div class="np-item">
+        <div class="np-nao"><span class="np-x">✕</span> Dominar inteligência artificial</div>
+        <div class="np-sim"><span class="np-check">✓</span> Usar a IA como apoio para acelerar sua execução</div>
+      </div>
+
+      <div class="np-item">
+        <div class="np-nao"><span class="np-x">✕</span> Viver fazendo conteúdos, lives e lançamentos</div>
+        <div class="np-sim"><span class="np-check">✓</span> Construir uma oferta de forma mais simples e estratégica</div>
+      </div>
+
+      <div class="np-item">
+        <div class="np-nao"><span class="np-x">✕</span> Esperar o momento perfeito</div>
+        <div class="np-sim"><span class="np-check">✓</span> Começar com o que você já sabe hoje</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ MESMO QUE ══════════ -->
+<section id="mesmo-que">
+  <div class="container">
+    <h2>O Infomap foi feito<br><em>para onde você está agora.</em></h2>
+    <span class="eyebrow">Mesmo que você ainda não...</span>
+
+    <div class="mq-list">
+
+      <div class="mq-item">
+        <div class="mq-header">
+          <span class="mq-dot"></span>
+          <h3>...tenha audiência</h3>
+        </div>
+        <p>Você não precisa de milhares de seguidores para criar seu primeiro produto digital. Antes da audiência, vem a oferta.</p>
+      </div>
+
+      <div class="mq-item">
+        <div class="mq-header">
+          <span class="mq-dot"></span>
+          <h3>...saiba usar IA</h3>
+        </div>
+        <p>Os agentes e direcionamentos do Infomap foram criados para simplificar o processo, mesmo para iniciantes.</p>
+      </div>
+
+      <div class="mq-item">
+        <div class="mq-header">
+          <span class="mq-dot"></span>
+          <h3>...tenha muito tempo disponível</h3>
+        </div>
+        <p>O método foi pensado para acelerar decisões e evitar meses de tentativa e erro.</p>
+      </div>
+
+      <div class="mq-item">
+        <div class="mq-header">
+          <span class="mq-dot"></span>
+          <h3>...tenha vendido online antes</h3>
+        </div>
+        <p>Você não precisa ter experiência. O Infomap foi criado justamente para quem está construindo seu primeiro produto digital.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -708,7 +1055,7 @@
       <div class="m-body">
         <p class="m-tag">Ponto de partida</p>
         <h3>Destino</h3>
-        <p>Descubra qual produto digital faz sentido para sua realidade. Identifique sua melhor oportunidade, defina sua promessa e escolha o formato ideal para começar.</p>
+        <p>Identifique sua melhor oportunidade, defina sua promessa e escolha o formato ideal para começar.</p>
         <p class="m-result">"Eu sei exatamente qual produto digital vou criar."</p>
       </div>
     </div>
@@ -718,7 +1065,7 @@
       <div class="m-body">
         <p class="m-tag">Jornada</p>
         <h3>Rota</h3>
-        <p>Transforme seu conhecimento em uma solução estruturada. Organize sua metodologia, defina a jornada da transformação e construa uma entrega clara e objetiva.</p>
+        <p>Organize sua metodologia e construa uma entrega clara, objetiva e pronta para vender.</p>
         <p class="m-result">"Minha entrega está totalmente estruturada."</p>
       </div>
     </div>
@@ -728,7 +1075,7 @@
       <div class="m-body">
         <p class="m-tag">Construção</p>
         <h3>Criação</h3>
-        <p>Tire seu produto do papel. Aprenda como criar, hospedar, configurar e finalizar sua estrutura sem complicação.</p>
+        <p>Crie, hospede e configure seu produto sem complicação.</p>
         <p class="m-result">"Meu produto está pronto."</p>
       </div>
     </div>
@@ -738,7 +1085,7 @@
       <div class="m-body">
         <p class="m-tag">Destino</p>
         <h3>Partida</h3>
-        <p>Coloque sua oferta no mercado. Aprenda como criar uma página simples, fazer sua oferta e buscar suas primeiras vendas.</p>
+        <p>Crie sua página, faça sua oferta e busque suas primeiras vendas.</p>
         <p class="m-result">"Meu produto está pronto para vender."</p>
       </div>
     </div>
@@ -746,13 +1093,18 @@
   </div>
 </section>
 
+<div class="cta-mid">
+  <p>Pronta para criar seu primeiro produto digital?</p>
+  <a href="#price" class="btn">Quero criar meu produto digital</a>
+</div>
+
 <hr class="thin" />
 
 <!-- ══════════ WHY ══════════ -->
 <section id="why">
   <div class="container-md">
     <span class="eyebrow">Por que funciona</span>
-    <h2>Clareza. Simplicidade.<br><em>Velocidade.</em></h2>
+    <h2>Clareza. Simplicidade. <em>Velocidade.</em></h2>
 
     <div class="pillars">
       <div class="pillar">
@@ -794,35 +1146,10 @@
   </div>
 </section>
 
-<!-- ══════════ STORY ══════════ -->
-<section id="story">
-  <div class="container">
-    <span class="eyebrow">A criadora</span>
-    <h2>A história por trás<br>do Infomap</h2>
-
-    <p>Durante anos, minha renda dependia da minha agenda. Eu vinha da arquitetura e vivia cercada por projetos, reuniões, clientes e mensagens. Cheguei a desenvolver ansiedade ao acordar e encontrar o WhatsApp cheio.</p>
-    <p>Mesmo com equipe, mais crescimento significava mais gestão, mais responsabilidades e menos liberdade. Foi quando comecei a buscar uma forma diferente de construir receita.</p>
-    <p>Descobri o poder dos produtos digitais. Não através de cursos gigantescos ou lançamentos complexos, mas através de produtos simples: templates, arquivos, modelos prontos, ferramentas, estruturas.</p>
-
-    <div class="million-stat">
-      <svg class="compass-deco" viewBox="0 0 200 200" fill="none">
-        <circle cx="100" cy="100" r="90" stroke="#E7E2DA" stroke-width="1"/>
-        <circle cx="100" cy="100" r="70" stroke="#E7E2DA" stroke-width="0.6"/>
-        <polygon points="100,10 103,97 100,100 97,97" fill="#E7E2DA"/>
-        <polygon points="100,190 103,103 100,100 97,103" fill="#A0563D"/>
-        <polygon points="10,100 97,97 100,100 97,103" fill="#E7E2DA" opacity="0.5"/>
-        <polygon points="190,100 103,97 100,100 103,103" fill="#E7E2DA" opacity="0.5"/>
-      </svg>
-      <span class="figure">R$ 1,5M+</span>
-      <p class="caption">gerados transformando conhecimento em ativos digitais<br>sem lançamentos complexos · sem lives constantes · sem agenda lotada</p>
-    </div>
-
-    <p>Foi dessa experiência que nasceu o Infomap.</p>
-    <div class="results-placeholder">Prints de resultados</div>
-  </div>
-</section>
-
-<hr class="thin" />
+<div class="cta-mid">
+  <p>Seu conhecimento já existe. Falta só o caminho.</p>
+  <a href="#price" class="btn">Quero criar meu produto digital</a>
+</div>
 
 <!-- ══════════ OFFER ══════════ -->
 <section id="offer">
@@ -860,6 +1187,49 @@
     </div>
   </div>
 </section>
+
+<hr class="thin" />
+
+<!-- ══════════ STORY ══════════ -->
+<section id="story">
+  <div class="container-md">
+    <div class="story-header">
+      <div class="story-image">
+        <img src="criadora.jpg" alt="Kassya Dias" />
+      </div>
+      <div class="story-title">
+        <span class="eyebrow">A criadora</span>
+        <h2>A história por trás do Infomap</h2>
+      </div>
+    </div>
+
+    <p>Durante anos como arquiteta, minha renda dependia da minha agenda.</p>
+    <p>Eu vivia cercada por clientes, reuniões, prazos e mensagens que nunca terminavam. Quanto mais eu trabalhava, mais responsabilidades surgiam. Já acordava com ansiedade com o WhatsApp cheio de mensagens.</p>
+    <p>Foi quando comecei a buscar uma forma diferente de construir receita. Comecei a transformar conhecimento em produtos digitais simples: templates, arquivos, modelos prontos, ferramentas e estruturas que resolviam problemas reais. E foi assim que construí uma nova fonte de renda.</p>
+
+    <div class="million-stat">
+      <svg class="compass-deco" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="90" stroke="#E7E2DA" stroke-width="1"/>
+        <circle cx="100" cy="100" r="70" stroke="#E7E2DA" stroke-width="0.6"/>
+        <polygon points="100,10 103,97 100,100 97,97" fill="#E7E2DA"/>
+        <polygon points="100,190 103,103 100,100 97,103" fill="#A0563D"/>
+        <polygon points="10,100 97,97 100,100 97,103" fill="#E7E2DA" opacity="0.5"/>
+        <polygon points="190,100 103,97 100,100 103,103" fill="#E7E2DA" opacity="0.5"/>
+      </svg>
+      <span class="figure">R$ +1,5M</span>
+      <p class="caption">faturados com produtos digitais simples<br>sem lançamentos complexos · sem lives constantes · sem agenda lotada</p>
+    </div>
+
+    <p>Mas o que mais mudou não foi apenas o faturamento. Foi a liberdade de não depender exclusivamente da minha agenda para ganhar dinheiro. De viajar sem levar trabalho junto. De acordar com notificações de vendas, não com ansiedade. De construir uma rotina mais leve, com mais autonomia sobre o meu tempo e as minhas escolhas.</p>
+    <p>Foi exatamente esse caminho que organizei dentro do Infomap — para que você consiga transformar o conhecimento que já possui em um produto digital simples, validado e pronto para vender.</p>
+    <div class="results-placeholder">Prints de resultados</div>
+  </div>
+</section>
+
+<div class="cta-mid">
+  <p>Esse caminho já está mapeado. Falta você dar o primeiro passo.</p>
+  <a href="#price" class="btn">Quero criar meu produto digital</a>
+</div>
 
 <hr class="thin" />
 
@@ -904,7 +1274,10 @@
 
     <h2>Seu conhecimento já existe.<br>É hora de transformá-lo em<br><em>um produto pronto para vender.</em></h2>
     <p class="tagline">Um mapa · Um método · Um objetivo</p>
-    <a href="#price" class="btn">Quero criar meu produto digital</a>
+    <div class="final-btns">
+      <a href="#price" class="btn">Quero criar meu produto digital</a>
+      <a href="#" class="btn btn-wpp">💬 Tirar dúvidas pelo WhatsApp</a>
+    </div>
   </div>
 </section>
 
