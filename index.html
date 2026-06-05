@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infomap — Do zero ao seu primeiro infoproduto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0D1B2A;
+      --teal:    #3A5A6F;
+      --brown:   #8B5E34;
+      --terra:   #A0563D;
+      --cream:   #E7E2DA;
+      --cream2:  #F2EDE6;
+      --cream3:  #FAF7F3;
+      --line:    rgba(13,27,42,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream2);
+      color: var(--navy);
+      line-height: 1.75;
+    }
+
+    /* ── UTILS ── */
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--terra);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 16px 48px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s;
+    }
+    .btn:hover { background: var(--teal); }
+    .btn-navy { background: var(--navy); }
+    .btn-navy:hover { background: var(--teal); }
+
+    section { padding: 100px 32px; }
+    .container    { max-width: 700px; margin: 0 auto; }
+    .container-md { max-width: 900px; margin: 0 auto; }
+    hr.thin { border: none; border-top: 1px solid var(--line); }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    #hero {
+      background: var(--cream3);
+      padding: 56px 32px 96px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* leaf decoration */
+    #hero::before {
+      content: '';
+      position: absolute;
+      left: -60px; top: -20px;
+      width: 280px; height: 280px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'%3E%3Cg fill='none' stroke='%233A5A6F' stroke-width='1.2' opacity='0.18'%3E%3Cpath d='M100 280 Q40 200 60 100 Q80 20 100 10 Q120 20 140 100 Q160 200 100 280Z'/%3E%3Cline x1='100' y1='280' x2='100' y2='10'/%3E%3Cpath d='M100 220 Q60 180 70 140'/%3E%3Cpath d='M100 220 Q140 180 130 140'/%3E%3Cpath d='M100 170 Q55 140 65 105'/%3E%3Cpath d='M100 170 Q145 140 135 105'/%3E%3Cpath d='M100 120 Q62 100 70 70'/%3E%3Cpath d='M100 120 Q138 100 130 70'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      right: -40px; bottom: 40px;
+      width: 220px; height: 320px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'%3E%3Cg fill='none' stroke='%233A5A6F' stroke-width='1.2' opacity='0.13'%3E%3Cpath d='M100 280 Q40 200 60 100 Q80 20 100 10 Q120 20 140 100 Q160 200 100 280Z'/%3E%3Cline x1='100' y1='280' x2='100' y2='10'/%3E%3Cpath d='M100 220 Q60 180 70 140'/%3E%3Cpath d='M100 220 Q140 180 130 140'/%3E%3Cpath d='M100 170 Q55 140 65 105'/%3E%3Cpath d='M100 170 Q145 140 135 105'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: scaleX(-1);
+      pointer-events: none;
+    }
+
+    /* ── LOGO ── */
+    .logo-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 64px;
+    }
+
+    /* compass SVG */
+    .compass {
+      width: 52px;
+      height: 52px;
+    }
+
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--navy);
+    }
+    .logo-name span { color: var(--brown); }
+
+    .logo-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 2px;
+    }
+
+    /* ── HERO HEADLINE ── */
+    #hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 400;
+      line-height: 1.12;
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+    #hero h1 em {
+      font-style: italic;
+      color: var(--terra);
+    }
+    #hero .sub {
+      font-size: 0.95rem;
+      color: var(--teal);
+      font-weight: 400;
+      max-width: 460px;
+      margin: 0 auto 52px;
+      line-height: 1.9;
+    }
+
+    /* dashed path decoration */
+    .path-deco {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: 72px;
+    }
+    .path-deco svg { width: 320px; height: 28px; }
+
+    /* ══════════════════════════════
+       PAIN
+    ══════════════════════════════ */
+    #pain { background: var(--cream2); }
+    #pain h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 36px;
+    }
+
+    .checks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .checks li {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      font-size: 0.93rem;
+      font-weight: 400;
+      color: var(--teal);
+    }
+    .checks li::before {
+      content: '◆';
+      color: var(--terra);
+      flex-shrink: 0;
+      font-size: 0.45rem;
+      line-height: 2.2;
+    }
+
+    .loop-block {
+      border-left: 2px solid var(--brown);
+      padding: 24px 32px;
+      margin: 48px 0;
+      background: rgba(139,94,52,0.05);
+    }
+    .loop-block p { font-size: 0.92rem; color: var(--teal); font-weight: 400; margin-bottom: 6px; }
+    .loop-block .final { color: var(--navy); font-weight: 600; margin: 0; }
+
+    /* ══════════════════════════════
+       BELIEF
+    ══════════════════════════════ */
+    #belief { background: var(--cream3); }
+    #belief h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    #belief h2 em { font-style: italic; color: var(--terra); }
+    #belief .intro { color: var(--teal); font-weight: 400; font-size: 0.93rem; margin-bottom: 44px; max-width: 520px; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-bottom: 40px;
+    }
+    .product-cell {
+      background: var(--cream3);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--navy);
+      transition: background 0.2s;
+    }
+    .product-cell:hover { background: var(--cream); }
+    .product-cell .icon { font-size: 1rem; }
+
+    .closing-note { font-size: 0.92rem; color: var(--teal); font-weight: 400; max-width: 520px; padding-top: 32px; border-top: 1px solid var(--line); }
+
+    /* ══════════════════════════════
+       MILESTONES
+    ══════════════════════════════ */
+    #milestones { background: #162030; color: var(--cream3); }
+    #milestones .eyebrow { color: #EDE5D4; }
+    #milestones h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #FAF7F3;
+      margin-top: 10px;
+      margin-bottom: 72px;
+    }
+    #milestones h2 em { font-style: italic; color: #F0E8DC; }
+
+    .milestone-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 36px;
+      margin-bottom: 56px;
+    }
+    .milestone-row:last-child { margin-bottom: 0; }
+
+    .m-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .m-num {
+      width: 48px; height: 48px;
+      border: 1px solid var(--brown);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown);
+      background: rgba(139,94,52,0.1);
+      flex-shrink: 0;
+    }
+    .m-line {
+      flex: 1;
+      width: 1px;
+      border-left: 1px dashed rgba(139,94,52,0.35);
+      margin-top: 10px;
+      min-height: 36px;
+    }
+    .milestone-row:last-child .m-line { display: none; }
+
+    .m-flag {
+      width: 20px; height: 20px;
+      color: var(--terra);
+      margin-top: 10px;
+    }
+
+    .m-body { padding-top: 10px; padding-bottom: 16px; }
+    .m-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #A8C4D0; margin-bottom: 6px; }
+    .m-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #FAF7F3;
+      margin-bottom: 12px;
+    }
+    .m-body p { font-size: 0.88rem; font-weight: 400; color: #C8C0B5; margin-bottom: 18px; max-width: 480px; line-height: 1.85; }
+    .m-result {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: #F0E8DC;
+    }
+
+    /* ══════════════════════════════
+       WHY
+    ══════════════════════════════ */
+    #why { background: var(--cream2); }
+    #why h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      margin-top: 10px;
+      margin-bottom: 56px;
+    }
+    #why h2 em { font-style: italic; color: var(--terra); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .pillar {
+      background: var(--cream2);
+      padding: 40px 32px;
+    }
+    /* icon using SVG compass-like shapes */
+    .pillar .p-icon {
+      width: 36px; height: 36px;
+      margin-bottom: 20px;
+      display: block;
+      color: var(--brown);
+    }
+    .pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .pillar p { font-size: 0.85rem; font-weight: 400; color: var(--teal); line-height: 1.8; }
+
+    @media (max-width: 640px) { .pillars { grid-template-columns: 1fr; } }
+
+    /* ══════════════════════════════
+       STORY
+    ══════════════════════════════ */
+    #story { background: var(--cream3); position: relative; overflow: hidden; }
+    #story h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      margin-top: 10px;
+      margin-bottom: 36px;
+    }
+    #story p { font-size: 0.92rem; font-weight: 400; color: var(--teal); margin-bottom: 20px; line-height: 1.95; }
+
+    .million-stat {
+      text-align: center;
+      padding: 60px 40px;
+      margin: 52px 0;
+      background: #162030;
+      position: relative;
+    }
+    .million-stat .compass-deco {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px; height: 200px;
+      opacity: 0.04;
+    }
+    .million-stat .figure {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-weight: 400;
+      color: #F0E8DC;
+      line-height: 1;
+      margin-bottom: 16px;
+      display: block;
+      position: relative;
+    }
+    #story .million-stat .caption {
+      font-size: 0.78rem;
+      color: #ffffff;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 2;
+      position: relative;
+    }
+
+    .results-placeholder {
+      border: 1px dashed var(--line);
+      padding: 60px 24px;
+      text-align: center;
+      color: var(--teal);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 40px;
+      opacity: 0.7;
+    }
+
+    /* ══════════════════════════════
+       OFFER
+    ══════════════════════════════ */
+    #offer { background: var(--cream2); }
+    #offer .sh { margin-bottom: 56px; }
+    #offer h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      margin-top: 10px;
+    }
+
+    .deliverables { display: flex; flex-direction: column; }
+    .deliverable {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 0 48px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .deliverable:first-child { border-top: 1px solid var(--line); }
+    .d-left { display: flex; align-items: flex-start; gap: 14px; }
+    .d-icon { font-size: 1rem; opacity: 0.7; padding-top: 3px; flex-shrink: 0; }
+    .d-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+    .d-right { font-size: 0.85rem; font-weight: 400; color: var(--teal); padding-top: 3px; line-height: 1.8; }
+
+    @media (max-width: 580px) { .deliverable { grid-template-columns: 1fr; gap: 8px; } }
+
+    /* ══════════════════════════════
+       PRICE
+    ══════════════════════════════ */
+    #price { background: var(--cream3); text-align: center; }
+    #price .sh { margin-bottom: 52px; }
+    #price h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      margin-top: 10px;
+    }
+    #price .sub { font-size: 0.9rem; color: var(--teal); font-weight: 400; margin-top: 14px; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+    .price-card {
+      max-width: 440px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      background: var(--cream2);
+      padding: 56px 44px;
+      position: relative;
+    }
+    /* compass watermark */
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 220px; height: 220px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%238B5E34' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='%238B5E34' stroke-width='0.5'/%3E%3Cpolygon points='50,5 53,47 50,50 47,47' fill='%230D1B2A' opacity='0.15'/%3E%3Cpolygon points='50,95 53,53 50,50 47,53' fill='%238B5E34' opacity='0.3'/%3E%3Cpolygon points='5,50 47,47 50,50 47,53' fill='%230D1B2A' opacity='0.1'/%3E%3Cpolygon points='95,50 53,47 50,50 53,53' fill='%230D1B2A' opacity='0.1'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+
+    .price-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; display: block; position: relative; }
+    .price-figure {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4.5rem, 10vw, 6rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .price-figure sup { font-size: 1.6rem; vertical-align: super; }
+    .price-note { font-size: 0.8rem; color: var(--teal); font-weight: 400; margin-bottom: 40px; line-height: 1.7; position: relative; }
+    .price-card .btn { width: 100%; text-align: center; display: block; margin-bottom: 18px; position: relative; }
+    .price-fine { font-size: 0.75rem; color: var(--teal); font-weight: 400; opacity: 0.8; position: relative; }
+
+    /* ══════════════════════════════
+       FINAL
+    ══════════════════════════════ */
+    #final {
+      background: #2A4459;
+      color: var(--cream3);
+      text-align: center;
+      padding: 100px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    #final::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 500px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%238B5E34' stroke-width='0.6'/%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%238B5E34' stroke-width='0.4'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%238B5E34' stroke-width='0.4'/%3E%3Cpolygon points='100,10 104,96 100,100 96,96' fill='%23E7E2DA'/%3E%3Cpolygon points='100,190 104,104 100,100 96,104' fill='%23A0563D'/%3E%3Cpolygon points='10,100 96,96 100,100 96,104' fill='%23E7E2DA' opacity='0.5'/%3E%3Cpolygon points='190,100 104,96 100,100 104,104' fill='%23E7E2DA' opacity='0.5'/%3E%3Cline x1='100' y1='10' x2='100' y2='190' stroke='%238B5E34' stroke-width='0.3' stroke-dasharray='3,4'/%3E%3Cline x1='10' y1='100' x2='190' y2='100' stroke='%238B5E34' stroke-width='0.3' stroke-dasharray='3,4'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .final-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 52px;
+      position: relative;
+    }
+    .final-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--cream3);
+    }
+    .final-logo-name span { color: var(--brown); }
+
+    #final h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 520px;
+      margin: 0 auto 16px;
+      position: relative;
+      color: #FAF7F3;
+    }
+    #final h2 em { font-style: italic; color: #F0E8DC; }
+    #final .tagline {
+      font-size: 0.72rem;
+      color: #A8C4D0;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      background: #080e15;
+      text-align: center;
+      padding: 28px 24px;
+      color: #3a4a58;
+      font-size: 0.73rem;
+      letter-spacing: 0.08em;
+    }
+    footer a { color: #4a5e6e; text-decoration: none; }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 600px) {
+      section { padding: 72px 24px; }
+      #hero::before, #hero::after { display: none; }
+      .price-card { padding: 44px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="container">
+
+    <!-- LOGO -->
+    <div class="logo-wrap">
+      <!-- Compass Rose SVG -->
+      <svg class="compass" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" stroke="#3A5A6F" stroke-width="1"/>
+        <circle cx="50" cy="50" r="36" stroke="#3A5A6F" stroke-width="0.6"/>
+        <!-- N point -->
+        <polygon points="50,4 53.5,48 50,50 46.5,48" fill="#0D1B2A"/>
+        <!-- S point (terra) -->
+        <polygon points="50,96 53.5,52 50,50 46.5,52" fill="#A0563D"/>
+        <!-- E point -->
+        <polygon points="96,50 52,46.5 50,50 52,53.5" fill="#0D1B2A" opacity="0.5"/>
+        <!-- W point -->
+        <polygon points="4,50 48,46.5 50,50 48,53.5" fill="#0D1B2A" opacity="0.5"/>
+        <!-- diagonals -->
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.4" transform="rotate(0,50,50)"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.4" transform="rotate(90,50,50)"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.4" transform="rotate(180,50,50)"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.4" transform="rotate(270,50,50)"/>
+        <circle cx="50" cy="50" r="3.5" fill="#0D1B2A"/>
+        <!-- tick marks -->
+        <line x1="50" y1="8" x2="50" y2="14" stroke="#3A5A6F" stroke-width="1"/>
+        <line x1="50" y1="86" x2="50" y2="92" stroke="#3A5A6F" stroke-width="1"/>
+        <line x1="8" y1="50" x2="14" y2="50" stroke="#3A5A6F" stroke-width="1"/>
+        <line x1="86" y1="50" x2="92" y2="50" stroke="#3A5A6F" stroke-width="1"/>
+      </svg>
+
+      <div class="logo-name">info<span>map</span></div>
+      <div class="logo-tagline">O mapa que te leva do zero ao seu primeiro infoproduto</div>
+    </div>
+
+    <h1>Transforme o conhecimento<br>que você já tem em um<br><em>produto digital<br>pronto para vender.</em></h1>
+
+    <p class="sub">O Infomap mostra exatamente o que criar, como estruturar sua oferta e como colocar seu produto no mercado com clareza, simplicidade e velocidade.</p>
+
+    <a href="#price" class="btn">Quero criar meu produto digital</a>
+
+    <!-- dashed path -->
+    <div class="path-deco">
+      <svg viewBox="0 0 320 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="14" r="5" fill="#3A5A6F" opacity="0.4"/>
+        <path d="M16 14 Q80 4 160 14 Q240 24 304 14" stroke="#8B5E34" stroke-width="1.2" stroke-dasharray="5,6" fill="none" opacity="0.5"/>
+        <!-- flag at end -->
+        <rect x="308" y="6" width="1.5" height="16" fill="#A0563D" opacity="0.7"/>
+        <polygon points="309.5,6 318,10 309.5,14" fill="#A0563D" opacity="0.7"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ PAIN ══════════ -->
+<section id="pain">
+  <div class="container">
+    <span class="eyebrow">O problema</span>
+    <h2>Você sabe que tem<br>conhecimento para vender.</h2>
+
+    <p style="color:var(--teal); font-size:0.93rem; margin-bottom:28px;">Mas ainda não sabe:</p>
+    <ul class="checks">
+      <li>O que criar</li>
+      <li>Qual formato escolher</li>
+      <li>Como organizar sua entrega</li>
+      <li>Como transformar tudo isso em uma oferta</li>
+    </ul>
+
+    <div class="loop-block">
+      <p>Enquanto isso, a ideia continua parada.</p>
+      <p>Você pesquisa. Salva conteúdos. Assiste aulas. Anota insights.</p>
+      <p class="final">Mas continua sem colocar nada no mercado.</p>
+    </div>
+
+    <p style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:400; font-style:italic; color:var(--terra); margin-top:8px;">O Infomap foi criado para mudar isso.</p>
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ BELIEF ══════════ -->
+<section id="belief">
+  <div class="container">
+    <span class="eyebrow">A crença que trava</span>
+    <h2>Seu primeiro produto<br><em>não precisa ser um curso.</em></h2>
+    <p class="intro">Você não precisa criar dezenas de aulas nem passar meses gravando. Seu primeiro produto pode ser algo muito mais simples.</p>
+
+    <div class="product-grid">
+      <div class="product-cell"><span class="icon">📦</span> Templates</div>
+      <div class="product-cell"><span class="icon">📋</span> Checklists</div>
+      <div class="product-cell"><span class="icon">📖</span> Guias</div>
+      <div class="product-cell"><span class="icon">🗂️</span> Frameworks</div>
+      <div class="product-cell"><span class="icon">📊</span> Planilhas</div>
+      <div class="product-cell"><span class="icon">🤖</span> Ferramentas</div>
+      <div class="product-cell"><span class="icon">📚</span> Bibliotecas</div>
+    </div>
+
+    <p class="closing-note">O problema não é falta de conhecimento. O problema é não ter um caminho claro para transformar esse conhecimento em uma oferta.</p>
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ MILESTONES ══════════ -->
+<section id="milestones">
+  <div class="container">
+    <span class="eyebrow">O método</span>
+    <h2>O caminho do zero ao seu<br><em>primeiro infoproduto</em></h2>
+
+    <div class="milestone-row">
+      <div class="m-left"><div class="m-num">1</div><div class="m-line"></div></div>
+      <div class="m-body">
+        <p class="m-tag">Ponto de partida</p>
+        <h3>Destino</h3>
+        <p>Descubra qual produto digital faz sentido para sua realidade. Identifique sua melhor oportunidade, defina sua promessa e escolha o formato ideal para começar.</p>
+        <p class="m-result">"Eu sei exatamente qual produto digital vou criar."</p>
+      </div>
+    </div>
+
+    <div class="milestone-row">
+      <div class="m-left"><div class="m-num">2</div><div class="m-line"></div></div>
+      <div class="m-body">
+        <p class="m-tag">Jornada</p>
+        <h3>Rota</h3>
+        <p>Transforme seu conhecimento em uma solução estruturada. Organize sua metodologia, defina a jornada da transformação e construa uma entrega clara e objetiva.</p>
+        <p class="m-result">"Minha entrega está totalmente estruturada."</p>
+      </div>
+    </div>
+
+    <div class="milestone-row">
+      <div class="m-left"><div class="m-num">3</div><div class="m-line"></div></div>
+      <div class="m-body">
+        <p class="m-tag">Construção</p>
+        <h3>Criação</h3>
+        <p>Tire seu produto do papel. Aprenda como criar, hospedar, configurar e finalizar sua estrutura sem complicação.</p>
+        <p class="m-result">"Meu produto está pronto."</p>
+      </div>
+    </div>
+
+    <div class="milestone-row">
+      <div class="m-left"><div class="m-num">4</div></div>
+      <div class="m-body">
+        <p class="m-tag">Destino</p>
+        <h3>Partida</h3>
+        <p>Coloque sua oferta no mercado. Aprenda como criar uma página simples, fazer sua oferta e buscar suas primeiras vendas.</p>
+        <p class="m-result">"Meu produto está pronto para vender."</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ WHY ══════════ -->
+<section id="why">
+  <div class="container-md">
+    <span class="eyebrow">Por que funciona</span>
+    <h2>Clareza. Simplicidade.<br><em>Velocidade.</em></h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <svg class="p-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#8B5E34" stroke-width="1.2"/>
+          <polygon points="18,2 19.5,17 18,18 16.5,17" fill="#0D1B2A"/>
+          <polygon points="18,34 19.5,19 18,18 16.5,19" fill="#A0563D"/>
+          <polygon points="2,18 17,16.5 18,18 17,19.5" fill="#0D1B2A" opacity="0.4"/>
+          <polygon points="34,18 19,16.5 18,18 19,19.5" fill="#0D1B2A" opacity="0.4"/>
+          <circle cx="18" cy="18" r="2" fill="#0D1B2A"/>
+        </svg>
+        <h3>Clareza</h3>
+        <p>Saiba exatamente o que criar, sem ficar paralisada diante de infinitas opções.</p>
+      </div>
+      <div class="pillar">
+        <svg class="p-icon" viewBox="0 0 36 36" fill="none">
+          <path d="M4 18 Q10 8 18 10 Q26 12 32 6" stroke="#8B5E34" stroke-width="1.4" stroke-dasharray="4,3" fill="none"/>
+          <circle cx="4" cy="18" r="3" fill="#3A5A6F"/>
+          <rect x="30" y="4" width="1.2" height="10" fill="#A0563D"/>
+          <polygon points="31.2,4 36,6.5 31.2,9" fill="#A0563D"/>
+        </svg>
+        <h3>Simplicidade</h3>
+        <p>Sem cursos gigantes, sem lançamentos complexos, sem excesso de etapas.</p>
+      </div>
+      <div class="pillar">
+        <svg class="p-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="14" stroke="#8B5E34" stroke-width="1.2"/>
+          <circle cx="18" cy="18" r="8" stroke="#8B5E34" stroke-width="0.8"/>
+          <circle cx="18" cy="18" r="3" fill="#A0563D"/>
+          <line x1="18" y1="4" x2="18" y2="8" stroke="#3A5A6F" stroke-width="1.2"/>
+          <line x1="18" y1="28" x2="18" y2="32" stroke="#3A5A6F" stroke-width="1.2"/>
+          <line x1="4" y1="18" x2="8" y2="18" stroke="#3A5A6F" stroke-width="1.2"/>
+          <line x1="28" y1="18" x2="32" y2="18" stroke="#3A5A6F" stroke-width="1.2"/>
+        </svg>
+        <h3>Aceleração</h3>
+        <p>Use IA para reduzir tempo, esforço e dúvidas durante a criação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STORY ══════════ -->
+<section id="story">
+  <div class="container">
+    <span class="eyebrow">A criadora</span>
+    <h2>A história por trás<br>do Infomap</h2>
+
+    <p>Durante anos, minha renda dependia da minha agenda. Eu vinha da arquitetura e vivia cercada por projetos, reuniões, clientes e mensagens. Cheguei a desenvolver ansiedade ao acordar e encontrar o WhatsApp cheio.</p>
+    <p>Mesmo com equipe, mais crescimento significava mais gestão, mais responsabilidades e menos liberdade. Foi quando comecei a buscar uma forma diferente de construir receita.</p>
+    <p>Descobri o poder dos produtos digitais. Não através de cursos gigantescos ou lançamentos complexos, mas através de produtos simples: templates, arquivos, modelos prontos, ferramentas, estruturas.</p>
+
+    <div class="million-stat">
+      <svg class="compass-deco" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="90" stroke="#E7E2DA" stroke-width="1"/>
+        <circle cx="100" cy="100" r="70" stroke="#E7E2DA" stroke-width="0.6"/>
+        <polygon points="100,10 103,97 100,100 97,97" fill="#E7E2DA"/>
+        <polygon points="100,190 103,103 100,100 97,103" fill="#A0563D"/>
+        <polygon points="10,100 97,97 100,100 97,103" fill="#E7E2DA" opacity="0.5"/>
+        <polygon points="190,100 103,97 100,100 103,103" fill="#E7E2DA" opacity="0.5"/>
+      </svg>
+      <span class="figure">R$ 1,5M+</span>
+      <p class="caption">gerados transformando conhecimento em ativos digitais<br>sem lançamentos complexos · sem lives constantes · sem agenda lotada</p>
+    </div>
+
+    <p>Foi dessa experiência que nasceu o Infomap.</p>
+    <div class="results-placeholder">Prints de resultados</div>
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ OFFER ══════════ -->
+<section id="offer">
+  <div class="container">
+    <div class="sh">
+      <span class="eyebrow">O que você recebe</span>
+      <h2>Tudo para criar e lançar<br>seu primeiro produto.</h2>
+    </div>
+
+    <div class="deliverables">
+      <div class="deliverable">
+        <div class="d-left"><span class="d-icon">🗺️</span><span class="d-name">Método Infomap</span></div>
+        <p class="d-right">O passo a passo completo para transformar conhecimento em um produto digital pronto para vender.</p>
+      </div>
+      <div class="deliverable">
+        <div class="d-left"><span class="d-icon">🎥</span><span class="d-name">Área de Membros</span></div>
+        <p class="d-right">Acesso imediato a todas as aulas organizadas nos 4 marcos do método.</p>
+      </div>
+      <div class="deliverable">
+        <div class="d-left"><span class="d-icon">🗺️</span><span class="d-name">Mapa da Monetização do Conhecimento</span></div>
+        <p class="d-right">A ferramenta central para transformar conhecimento em oportunidade.</p>
+      </div>
+      <div class="deliverable">
+        <div class="d-left"><span class="d-icon">🤖</span><span class="d-name">Agentes de IA</span></div>
+        <p class="d-right">Assistentes estratégicos para acelerar sua execução em cada etapa.</p>
+      </div>
+      <div class="deliverable">
+        <div class="d-left"><span class="d-icon">📋</span><span class="d-name">Checklists de Implementação</span></div>
+        <p class="d-right">Saiba exatamente o que fazer em cada etapa, sem perder nenhum detalhe.</p>
+      </div>
+      <div class="deliverable">
+        <div class="d-left"><span class="d-icon">📦</span><span class="d-name">Templates Prontos</span></div>
+        <p class="d-right">Modelos que aceleram a criação do seu produto digital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="thin" />
+
+<!-- ══════════ PRICE ══════════ -->
+<section id="price">
+  <div class="container">
+    <div class="sh">
+      <span class="eyebrow">Investimento</span>
+      <h2>Simples como o método.</h2>
+      <p class="sub">Você pode continuar tentando descobrir tudo sozinha. Ou seguir um caminho que já está mapeado.</p>
+    </div>
+
+    <div class="price-card">
+      <span class="price-tag">Acesso completo ao Infomap</span>
+      <p class="price-figure"><sup>R$</sup>97</p>
+      <p class="price-note">ou parcelado em até 12× no cartão pela Hubla</p>
+      <a href="#" class="btn btn-navy">Quero criar meu produto digital</a>
+      <p class="price-fine">Acesso imediato após confirmação do pagamento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FINAL ══════════ -->
+<section id="final">
+  <div class="container">
+    <div class="final-logo">
+      <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" stroke="#3A5A6F" stroke-width="1" opacity="0.6"/>
+        <circle cx="50" cy="50" r="36" stroke="#3A5A6F" stroke-width="0.5" opacity="0.4"/>
+        <polygon points="50,4 53.5,48 50,50 46.5,48" fill="#E7E2DA"/>
+        <polygon points="50,96 53.5,52 50,50 46.5,52" fill="#A0563D"/>
+        <polygon points="96,50 52,46.5 50,50 52,53.5" fill="#E7E2DA" opacity="0.4"/>
+        <polygon points="4,50 48,46.5 50,50 48,53.5" fill="#E7E2DA" opacity="0.4"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.5" transform="rotate(0,50,50)"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.5" transform="rotate(90,50,50)"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.5" transform="rotate(180,50,50)"/>
+        <polygon points="79,21 52.5,48.5 50,50 47.5,52.5" fill="#8B5E34" opacity="0.5" transform="rotate(270,50,50)"/>
+        <circle cx="50" cy="50" r="3" fill="#E7E2DA"/>
+      </svg>
+      <span class="final-logo-name">info<span>map</span></span>
+    </div>
+
+    <h2>Seu conhecimento já existe.<br>É hora de transformá-lo em<br><em>um produto pronto para vender.</em></h2>
+    <p class="tagline">Um mapa · Um método · Um objetivo</p>
+    <a href="#price" class="btn">Quero criar meu produto digital</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Infomap &nbsp;·&nbsp; <a href="#">Termos de uso</a> &nbsp;·&nbsp; <a href="#">Política de privacidade</a></p>
+</footer>
+
+</body>
+</html>
